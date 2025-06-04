@@ -1,0 +1,480 @@
+{% extends "base.html" %}
+{% block title %}Courses - VizioPath{% endblock %}
+{% block extra_style %}
+<style>
+    body {
+        background-image: url("/static/assets/courses.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    .course-card {
+        background: rgba(6, 2, 61, 0.8);
+        border-radius: 8px;
+        padding: 1.5em;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        flex: 1 1 calc(33.333% - 1.5em);
+        max-width: calc(33.333% - 1.5em);
+    }
+    .course-card h3 {
+        margin-top: 0;
+    }
+    .course-card a {
+        display: inline-block;
+        margin-top: 1em;
+        padding: 0.75em 1.5em;
+        background: #007bff;
+        color: rgb(9, 4, 53);
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .course-card a:hover {
+        background: #0056b3;
+    }
+    .transform-card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5em;
+    }
+    .transform-card {
+        border-radius: 16px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.7); /* Black shadow with more opacity */
+        padding: 2em 1.5em;
+        flex: 1 1 250px;
+        max-width: 300px;
+        min-width: 220px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        color: #222;
+        position: relative;
+        overflow: hidden;
+    }
+    .transform-card:hover {
+        transform: translateY(-12px) scale(1.04);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.85); /* Stronger black shadow on hover */
+        background: rgba(0,123,255,0.10);
+    }
+    .transform-card h3 {
+        margin-top: 0;
+        color: #fff; /* White color */
+        font-size: 1.3em;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+    }
+    .transform-card p {
+        font-size: 1em;
+        margin-bottom: 1em;
+        color: #f7f2f2;
+    }
+    .transform-card a {
+        color: #fff;
+        background: #007bff;
+        padding: 0.6em 1.2em;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background 0.2s;
+        display: inline-block;
+    }
+    .transform-card a:hover {
+        background: #0056b3;
+    }
+    .about-card-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5em;
+        margin-top: 2em;
+    }
+    .about-card {
+        /* background: rgba(6, 2, 61, 0.8); */ /* Keep background removed for transparency */
+        border-radius: 8px;
+        padding: 1.5em;
+        box-shadow: 0 6px 24px rgba(0,0,0,0.45); /* Add a strong dark shadow */
+        flex: 1 1 calc(33.333% - 1.5em);
+        max-width: calc(33.333% - 1.5em);
+        color: #fff;
+        margin-bottom: 1.5em; /* Optional: space between rows */
+        transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .about-card:hover {
+        box-shadow: 0 12px 32px rgba(0,0,0,0.7); /* Even stronger shadow on hover */
+        transform: translateY(-8px) scale(1.03);
+    }
+    .about-card h3 {
+        margin-top: 0;
+        font-size: 1.2em;
+        color: #edf507;
+    }
+    .about-card ul {
+        list-style-type: disc;
+        padding-left: 1.2em;
+        margin-top: 0.5em;
+    }
+    .about-card ul li {
+        margin-bottom: 0.5em;
+    }
+    .watch-video-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+        margin: 1.2em auto 0 auto;
+        padding: 0.7em 1.5em;
+        background: linear-gradient(90deg, #ff9800 0%, #ffd600 100%);
+        color: #22223b;
+        border: none;
+        border-radius: 30px;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-decoration: none;
+        box-shadow: 0 4px 16px rgba(255, 216, 0, 0.15);
+        transition: background 0.2s, transform 0.2s;
+        width: fit-content;
+    }
+    .watch-video-btn:hover {
+        background: linear-gradient(90deg, #ffd600 0%, #ff9800 100%);
+        color: #0a1931;
+        transform: scale(1.07);
+        box-shadow: 0 8px 24px rgba(255, 216, 0, 0.25);
+    }
+    .watch-video-btn svg {
+        width: 1.5em;
+        height: 1.5em;
+        fill: #22223b;
+    }
+    .watch-video-btn:hover svg {
+        fill: #0a1931;
+    }
+    .about-card .card-hero img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 50%;
+        box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+        border: 4px solid #ffd600;
+        background: #fff;
+        transition: transform 0.3s, box-shadow 0.3s;
+        /* Remove any filter or blur if present */
+        image-rendering: auto; /* Ensures browser uses best quality */
+    }
+    .about-card:hover .card-hero img {
+        transform: scale(1.08) rotate(-3deg);
+        box-shadow: 0 12px 32px rgba(255, 216, 0, 0.35);
+        border-color: #ff9800;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div style="text-align: center; margin-top: 3em; margin-bottom: 2em;">
+    <h1 style="color: #fff;">Welcome to VizioPath</h1>
+    <p style="color: #fff;">Your gateway to learning! Explore our wide range of courses and start your educational journey today.</p>
+    <a href="{{ url_for('courses') }}" style="display:inline-block;padding:10px 20px;background:#007bff;color:#fff;text-decoration:none;border-radius:5px;margin-top:1em;">Browse Courses</a>
+</div>
+<div class="about-card-section">
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/digital.jpg" alt="Digital Marketing" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Digital Marketing</h3>
+        <ul style="text-align:left;">
+            <li>SEO, SEM</li>
+            <li>Content creation</li>
+            <li>Social media management</li>
+            <li>Email marketing</li>
+            <li>Analytics & paid ads</li>
+            <li>Design tools</li>
+            <li>E-commerce marketing</li>
+            <li>Communication</li>
+        </ul>
+        <a href="https://youtu.be/kunkYTKFNtI?si=_DLxsYi-wbVJwqes" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/finance.jpg" alt="Banking and Finance" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Banking and Finance</h3>
+        <ul style="text-align:left;">
+            <li>Financial analysis</li>
+            <li>Accounting</li>
+            <li>Risk management</li>
+            <li>Investment planning</li>
+            <li>Banking operations</li>
+            <li>Fintech & compliance</li>
+            <li>Customer service</li>
+            <li>Data analysis</li>
+        </ul>
+        <a href="https://youtu.be/AkMTxMN7res?si=9-tsAOCj8eM52N55" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/analyst.jpg" alt="Business Analytics" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Business Analytics</h3>
+        <ul style="text-align:left;">
+            <li>Data analysis & visualization</li>
+            <li>Statistical modeling</li>
+            <li>SQL, Excel, Python/R</li>
+            <li>Predictive analytics</li>
+            <li>Business intelligence tools</li>
+            <li>Problem-solving</li>
+        </ul>
+        <a href="https://youtu.be/VaSjiJMrq24?si=my6_el5-UVPnaOqc" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/design.jpg" alt="Graphic Design" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Graphic Design</h3>
+        <ul style="text-align:left;">
+            <li>Creativity & typography</li>
+            <li>Color theory</li>
+            <li>Layout design & branding</li>
+            <li>Adobe Creative Suite</li>
+            <li>UI/UX basics</li>
+            <li>Visual communication</li>
+        </ul>
+         <a href="https://youtu.be/e_dv7GBHka8?si=tHjZ3A8myncn42fS" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/entrepreneur.jpg" alt="Entrepreneurship" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Entrepreneurship</h3>
+        <ul style="text-align:left;">
+            <li>Innovation & leadership</li>
+            <li>Business planning</li>
+            <li>Financial management</li>
+            <li>Risk-taking & problem-solving</li>
+            <li>Networking & marketing</li>
+            <li>Decision-making</li>
+        </ul>
+        <a href="https://youtu.be/UEngvxZ11sw?si=ioFrS7y06roR5wjl" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/hrm.jpg" alt="Human Resource Management" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Human Resource Management (HRM)</h3>
+        <ul style="text-align:left;">
+            <li>Recruitment</li>
+            <li>Employee relations</li>
+            <li>Payroll</li>
+            <li>Training</li>
+            <li>Performance management</li>
+            <li>Communication</li>
+            <li>Legal compliance</li>
+            <li>Data analysis</li>
+            <li>Empathy</li>
+        </ul>
+        <a href="https://www.youtube.com/watch?v=VIDEO_ID5" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/marketing.jpg" alt="Marketing" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Marketing</h3>
+        <ul style="text-align:left;">
+            <li>Market research</li>
+            <li>Brand management</li>
+            <li>Advertising</li>
+            <li>Digital marketing</li>
+            <li>Sales strategy</li>
+            <li>Consumer behavior</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/om.jpg" alt="Operations Management" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Operations Management</h3>
+        <ul style="text-align:left;">
+            <li>Process optimization</li>
+            <li>Supply chain management</li>
+            <li>Quality control</li>
+            <li>Logistics</li>
+            <li>Inventory management</li>
+            <li>Project management</li>
+        </ul>
+        <a href="https://youtube.com/playlist?list=PL5_qO7P2XjBd86Pw0SQVTaA88nHTj1I3e&si=-QE8YwCcj3WG0eI7" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/international.jpg" alt="International Business" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>International Business (IB)</h3>
+        <ul style="text-align:left;">
+            <li>Global strategy</li>
+            <li>Cross-cultural management</li>
+            <li>International marketing</li>
+            <li>Export/import operations</li>
+            <li>Foreign exchange</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/it1.jpg" alt="Information Technology" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Information Technology (IT)</h3>
+        <ul style="text-align:left;">
+            <li>Programming</li>
+            <li>Database management</li>
+            <li>Networking</li>
+            <li>Cybersecurity</li>
+            <li>Cloud computing</li>
+            <li>IT support</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/scm.jpg" alt="Supply Chain Management" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Supply Chain Management (SCM)</h3>
+        <ul style="text-align:left;">
+            <li>Procurement</li>
+            <li>Logistics</li>
+            <li>Inventory control</li>
+            <li>Supplier management</li>
+            <li>Distribution</li>
+            <li>Demand planning</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/retail.jpg" alt="Retail Management" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Retail Management</h3>
+        <ul style="text-align:left;">
+            <li>Store operations</li>
+            <li>Merchandising</li>
+            <li>Customer service</li>
+            <li>Sales management</li>
+            <li>Inventory control</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/AI.jpg" alt="Data Science & AI in Business" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Data Science & AI in Business</h3>
+        <ul style="text-align:left;">
+            <li>Data mining</li>
+            <li>Machine learning</li>
+            <li>Predictive analytics</li>
+            <li>Big data</li>
+            <li>Business intelligence</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/e commerce.jpg" alt="E-Commerce" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>E-Commerce</h3>
+        <ul style="text-align:left;">
+            <li>Online store management</li>
+            <li>Digital payments</li>
+            <li>Order fulfillment</li>
+            <li>Customer experience</li>
+            <li>Product listing</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/ft.jpg" alt="Financial Technology (FinTech)" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Financial Technology (FinTech)</h3>
+        <ul style="text-align:left;">
+            <li>Mobile payments</li>
+            <li>Blockchain basics</li>
+            <li>Digital banking</li>
+            <li>Cryptocurrency</li>
+            <li>Financial software</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/bm.jpg" alt="Blockchain Management" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Blockchain Management</h3>
+        <ul style="text-align:left;">
+            <li>Distributed ledger</li>
+            <li>Smart contracts</li>
+            <li>Cryptocurrency</li>
+            <li>Blockchain strategy</li>
+            <li>Security</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+    <div class="about-card">
+        <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+            <img src="/static/assets/lt.jpg" alt="Logistics & Transportation" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+        </div>
+        <h3>Logistics & Transportation</h3>
+        <ul style="text-align:left;">
+            <li>Fleet management</li>
+            <li>Route optimization</li>
+            <li>Warehousing</li>
+            <li>Distribution</li>
+            <li>Supply chain coordination</li>
+        </ul>
+         <a href="https://www.youtube.com/watch?v=VIDEO_ID" target="_blank" class="watch-video-btn">
+            <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+            Watch Video
+        </a>
+    </div>
+</div>
+{% endblock %}

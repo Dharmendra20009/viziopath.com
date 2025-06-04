@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - VizioPath</title>
+    {% block extra_style %}
+    <style>
+        body {
+            background-image: url("/static/assets/about3.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .content {
+            text-align: center;
+        }
+        .content h1, .content h2, .content p {
+            color: #ffffff;
+        }
+        .about-card-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2em;
+            justify-content: center;
+            margin: 2em 0;
+        }
+        .about-card {
+            /* background: rgba(0, 0, 0, 0.85); */      /* Remove or comment out this line */
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.7);    /* Dark shadow */
+            padding: 2em 1.5em;
+            max-width: 320px;
+            min-width: 220px;
+            color: #fff;                               /* White text */
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+        }
+        .about-card:hover {
+            transform: translateY(-10px) scale(1.04);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.85);  /* Stronger shadow on hover */
+            background: rgba(30, 30, 30, 0.95);        /* Slightly lighter black on hover */
+        }
+        .about-card h3 {
+            margin-top: 0;
+            color: #FFD600;                            /* Yellow headline for contrast */
+        }
+    </style>
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar" style="position:fixed;top:0;left:0;width:100%;z-index:1000;background:#22223b;padding:1em 0;box-shadow:0 2px 8px rgba(0,0,0,0.12);display:flex;justify-content:flex-end;gap:2em;">
+        <a href="{{ url_for('home') }}" class="brand-logo" style="display:flex;align-items:center;gap:0.5em;margin-right:auto;">
+            <img src="{{ url_for('static', filename='assets/logo2.0.jpg') }}" alt="VizioPath Logo" style="height:40px;border-radius:8px;">
+            <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
+        </a>
+        <a href="{{ url_for('home') }}" style="color:#ffd600;text-decoration:none;font-weight:bold;">Home</a>
+        <a href="{{ url_for('courses') }}" style="color:#f5f5f5;text-decoration:none;font-weight:bold;">Courses</a>
+        <a href="{{ url_for('about') }}" style="color:#f5f5f5;text-decoration:none;font-weight:bold;">About</a>
+        <a href="{{ url_for('contact') }}" style="color:#f5f5f5;text-decoration:none;font-weight:bold;">Contact</a>
+    </nav>
+    <div style="height:84px;"></div> <!-- Add this line just after nav to prevent content from hiding under navbar -->
+    {% block content %}
+    <div class="content">
+        <h1>About VizioPath</h1>
+        <p>
+           At VizioPath, we believe that education is not just about acquiring knowledge—it's about shaping futures. Our career development roadmap is a comprehensive guide designed to help learners of all ages chart a clear path from education to meaningful employment and personal growth. Whether you're a student deciding your first steps, a professional seeking advancement, or someone looking to switch careers, our resources and guidance are here to support every stage of your journey.
+        </p>
+        <h2>Our Vision</h2>
+        <p>
+            To empower students with the skills, confidence, and mindset needed to solve real-world problems, think critically, and thrive in a dynamic learning environment.
+        </p>
+        <h2>What We Offer</h2>
+        <div class="about-card-section">
+            <div class="about-card">
+                <h3>Digital Marketing</h3>
+            </div>
+            <div class="about-card">
+                <h3>Banking and Finance</h3>
+            </div>
+            <div class="about-card">
+                <h3>Business Analytics</h3>
+            </div>
+            <div class="about-card">
+                <h3>Graphic Design</h3>
+            </div>
+            <div class="about-card">
+                <h3>Entrepreneurship</h3>
+            </div>
+            <div class="about-card">
+                <h3>Human Resource Management (HRM)</h3>
+            </div>
+            <div class="about-card">
+                <h3>Marketing</h3>
+            </div>
+            <div class="about-card">
+                <h3>Operations Management</h3>
+            </div>
+            <div class="about-card">
+                <h3>International Business (IB)</h3>
+            </div>
+            <div class="about-card">
+                <h3>Information Technology (IT)</h3>
+            </div>
+            <div class="about-card">
+                <h3>Supply Chain Management (SCM)</h3>
+            </div>
+            <div class="about-card">
+                <h3>Retail Management</h3>
+            </div>
+            <div class="about-card">
+                <h3>Data Science & AI in Business</h3>
+            </div>
+            <div class="about-card">
+                <h3>E-Commerce</h3>
+            </div>
+            <div class="about-card">
+                <h3>Financial Technology (FinTech)</h3>
+            </div>
+            <div class="about-card">
+                <h3>Blockchain Management</h3>
+            </div>
+            <div class="about-card">
+                <h3>Logistics & Transportation</h3>
+            </div>
+        </div>
+        <div style="text-align: left; margin-top: 2em;">
+            <h2 style="color: #f9f1f1;">Founder & CEO</h2>
+            <p style="color: #ebe7e7;">Dharmendra Gupta</p>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>

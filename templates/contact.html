@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Contact Us - VizioPath{% endblock %}
+{% block extra_style %}
+<style>
+    body {
+        background-image: url("/static/assets/contact.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    h2, label, input, textarea, button {
+        color: #fff !important;
+    }
+    input, textarea {
+        background: rgba(0,0,0,0.4);
+        border: 1px solid #fff;
+    }
+    input, textarea, button {
+        font-size: 1em;
+    }
+    button {
+        background: #007bff;
+        border: none;
+        padding: 0.7em 1.5em;
+        border-radius: 5px;
+        color: #fff;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div style="max-width: 400px; margin: 1.5em auto 2em auto; background: rgba(0,0,0,0.65); border-radius: 14px; box-shadow: 0 6px 24px rgba(0,0,0,0.4); padding: 1.5em 1em;">
+    <h2 style="text-align:center; font-size:1.5em; margin-bottom:0.7em;">Contact Us</h2>
+    <form method="post" action="{{ url_for('contact') }}">
+        <label for="first_name">First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" required style="width:100%;padding:0.5em;margin-bottom:0.7em;"><br>
+
+        <label for="last_name">Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" required style="width:100%;padding:0.5em;margin-bottom:0.7em;"><br>
+
+        <label for="gmail">Gmail:</label><br>
+        <input type="email" id="gmail" name="gmail" pattern=".+@gmail\.com" required style="width:100%;padding:0.5em;margin-bottom:0.7em;"><br>
+
+        <label for="phone">Phone Number:</label><br>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required style="width:100%;padding:0.5em;margin-bottom:0.7em;"><br>
+
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" required style="width:100%;padding:0.5em;margin-bottom:1em;"></textarea><br>
+
+        <button type="submit" style="width:100%;font-size:1em;">Send Message</button>
+    </form>
+</div>
+{% endblock %}
+
+from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_mail import Mail, Message
+
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'
+
+# Mail configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'your_email@gmail.com'
+app.config['MAIL_PASSWORD'] = 'your_email_password'  # Use an app password if 2FA is enabled
+
+mail = Mail(app)
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        first_name = request.form['first_name']
+        last_name = request.form['last_name']
+        gmail = request.form['gmail']
+        phone = request.form['phone']
+        message = request.form['message']
+
+        # Compose email
+        msg = Message(
+            subject="New Contact Form Submission",
+            sender=app.config['MAIL_USERNAME'],
+            recipients=['your_email@gmail.com'],  # Your email address
+            body=f"Name: {first_name} {last_name}\nEmail: {gmail}\nPhone: {phone}\n\nMessage:\n{message}"
+        )
+        mail.send(msg)
+        flash('Your message has been sent successfully!', 'success')
+        return redirect(url_for('contact'))
+    return render_template('contact.html')

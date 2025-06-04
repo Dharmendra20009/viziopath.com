@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block title %}Home - VizioPath{% endblock %}
+{% block extra_style %}
+<style>
+    body {
+        background-image: url("/static/assets/logo2.0.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<!-- Home Section -->
+<div id="home" style="text-align: center; margin-top: 3em; margin-bottom: 2em;">
+    <h1 style="color: #fff;">Welcome to VizioPath</h1>
+    <p style="color: #fff;">Your gateway to learning! Explore our wide range of courses and start your educational journey today.</p>
+    <a href="#courses" style="display:inline-block;padding:10px 20px;background:#007bff;color:#fff;text-decoration:none;border-radius:5px;margin-top:1em;">Browse Courses</a>
+    <div style="margin-top: 0.7em; font-size: 2.5em; color: #FFD600;">
+        ★★★★<span style="color:#FFD600;">☆</span>
+    </div>
+</div>
+
+<!-- Stats Section -->
+<div class="stats-section">
+    <div class="stat">
+        <span class="stat-number blue">10K+</span>
+        <div class="stat-label">Students Impacted</div>
+    </div>
+    <div class="stat">
+        <span class="stat-number purple">20+</span>
+        <div class="stat-label">Management specializations</div>
+    </div>
+    <div class="stat">
+        <span class="stat-number blue">1000+</span>
+        <div class="stat-label">Industry Problems</div>
+    </div>
+    <div class="stat">
+        <span class="stat-number purple">99.99%</span>
+        <div class="stat-label">User Satisfaction</div>
+    </div>
+</div>
+
+<!-- Courses Section -->
+<!--
+<div id="courses" style="margin: 4em 0; text-align: center;">
+    <h2 style="color:#fff;">Featured Courses</h2>
+    <div class="courses-container" style="display:flex;flex-wrap:wrap;gap:1.5em;justify-content:center;">
+        <div class="course-card" style="background:rgba(0,0,0,0.5);border-radius:10px;padding:1.5em;min-width:220px;max-width:320px;color:#fff;">
+            <h3 style="color:#FFD600;">Digital Marketing</h3>
+            <p>Learn SEO, SEM, content creation, social media management, email marketing, analytics, paid ads, design tools, e-commerce marketing, and communication.</p>
+            <a href="#" style="color:#fff;background:#007bff;padding:0.6em 1.2em;border-radius:5px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:1em;">View Course</a>
+        </div>
+        <div class="course-card" style="background:rgba(0,0,0,0.5);border-radius:10px;padding:1.5em;min-width:220px;max-width:320px;color:#fff;">
+            <h3 style="color:#FFD600;">Banking and Finance</h3>
+            <p>Financial analysis, accounting, risk management, investment planning, banking operations, fintech, regulatory compliance, customer service, and data analysis.</p>
+            <a href="#" style="color:#fff;background:#007bff;padding:0.6em 1.2em;border-radius:5px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:1em;">View Course</a>
+        </div>
+        <div class="course-card" style="background:rgba(0,0,0,0.5);border-radius:10px;padding:1.5em;min-width:220px;max-width:320px;color:#fff;">
+            <h3 style="color:#FFD600;">Business Analytics</h3>
+            <p>Data analysis, statistical modeling, data visualization, SQL, Excel, Python/R, predictive analytics, business intelligence tools, and problem-solving.</p>
+            <a href="#" style="color:#fff;background:#007bff;padding:0.6em 1.2em;border-radius:5px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:1em;">View Course</a>
+        </div>
+        <div class="course-card" style="background:rgba(0,0,0,0.5);border-radius:10px;padding:1.5em;min-width:220px;max-width:320px;color:#fff;">
+            <h3 style="color:#FFD600;">Graphic Design</h3>
+            <p>Creativity, typography, color theory, layout design, branding, Adobe Creative Suite (Photoshop, Illustrator, InDesign), UI/UX basics, and visual communication.</p>
+            <a href="#" style="color:#fff;background:#007bff;padding:0.6em 1.2em;border-radius:5px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:1em;">View Course</a>
+        </div>
+        <div class="course-card" style="background:rgba(0,0,0,0.5);border-radius:10px;padding:1.5em;min-width:220px;max-width:320px;color:#fff;">
+            <h3 style="color:#FFD600;">Entrepreneurship</h3>
+            <p>Innovation, leadership, business planning, financial management, risk-taking, problem-solving, networking, marketing, and decision-making.</p>
+            <a href="#" style="color:#fff;background:#007bff;padding:0.6em 1.2em;border-radius:5px;text-decoration:none;font-weight:bold;display:inline-block;margin-top:1em;">View Course</a>
+        </div>
+        <!-- Add more course cards as needed -->
+    </div>
+</div>
+-->
+
+<!-- What We Offer Section -->
+<div id="what-we-offer" style="margin: 4em 0; text-align: center;">
+    <h2 style="color:#fff; font-size:2.2em; margin-bottom:1.5em;">What We Offer</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:2em;justify-content:center;">
+        <div class="offer-card">Digital Marketing</div>
+        <div class="offer-card">Banking and Finance</div>
+        <div class="offer-card">Business Analytics</div>
+        <div class="offer-card">Graphic Design</div>
+        <div class="offer-card">Entrepreneurship</div>
+        <div class="offer-card">Human Resource Management (HRM)</div>
+        <div class="offer-card">Marketing</div>
+        <div class="offer-card">Operations Management</div>
+        <div class="offer-card">International Business (IB)</div>
+        <div class="offer-card">Information Technology (IT)</div>
+        <div class="offer-card">Supply Chain Management (SCM)</div>
+        <div class="offer-card">Retail Management</div>
+        <div class="offer-card">Data Science & AI in Business</div>
+        <div class="offer-card">E-Commerce</div>
+        <div class="offer-card">Financial Technology (FinTech)</div>
+        <div class="offer-card">Blockchain Management</div>
+    </div>
+</div>
+
+<a href="#home" class="brand-logo" style="display:flex;align-items:center;gap:0.5em;margin-right:auto;">
+    <img src="/static/assets/logo2.0.jpg" alt="VizioPath Logo" style="height:40px;border-radius:8px;">
+    <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
+</a>
+
+<style>
+html { scroll-behavior: smooth; }
+.stats-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4em;
+    margin: 3em 0 2em 0;
+    flex-wrap: nowrap;
+}
+.stat {
+    text-align: center;
+    min-width: 160px;
+}
+.stat-number {
+    font-size: 2.5em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.2em;
+}
+.stat-number.blue {
+    color: #ec9909;
+}
+.stat-number.purple {
+    color: #eaac0d;
+}
+.stat-label {
+    font-size: 1.1em;
+    color: #f5f2f2;
+    letter-spacing: 0.5px;
+}
+.offer-card {
+    background: rgba(6, 2, 61, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 1.5px 8px #ffd600;
+    padding: 1.5em 1.2em;
+    color: #FFD600;
+    font-size: 1.35em;
+    font-weight: bold;
+    min-width: 260px;
+    max-width: 340px;
+    margin-bottom: 1em;
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+}
+.offer-card:hover {
+    transform: scale(1.06) translateY(-6px);
+    box-shadow: 0 16px 48px rgba(255, 214, 0, 0.25), 0 4px 32px #ffd600;
+    background: rgba(30, 30, 60, 0.95);
+}
+@media (max-width: 900px) {
+    .stats-section {
+        flex-wrap: wrap;
+        gap: 2em;
+    }
+    .offer-card {
+        min-width: 180px;
+        font-size: 1em;
+        padding: 1em 0.5em;
+    }
+}
+</style>
+{% endblock %}

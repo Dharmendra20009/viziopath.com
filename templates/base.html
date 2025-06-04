@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}VizioPath{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block extra_style %}{% endblock %}
+    <style>
+        body {
+            background-color: #f4f8fb; /* fallback color */
+            color: #222;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: flex-end;
+            background: #0a1931; /* Change this to your desired color */
+            border-bottom: 2px solid #007bff;
+            padding: 1em;
+            gap: 2em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .navbar a {
+            color: #fff; /* White text for navbar links */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+
+        .navbar a:hover {
+            color: #FFD600; /* Yellow on hover */
+        }
+
+        .container {
+            margin: 2em auto;
+            padding: 2em;
+            max-width: 900px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em;
+            background: #f4f8fb;
+            color: #555;
+            border-top: 1px solid #eee;
+        }
+
+        .course-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 1.5em;
+            flex: 1 1 250px;
+            max-width: 300px;
+        }
+
+        .course-card h3 {
+            margin-top: 0;
+        }
+
+        .course-card a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .course-card a:hover {
+            color: #0056b3;
+        }
+
+        .courses-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5em;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="{{ url_for('home') }}" class="brand-logo" style="display:flex;align-items:center;gap:0.5em;margin-right:auto;">
+            <img src="{{ url_for('static', filename='assets/logo2.0.jpg') }}" alt="VizioPath Logo" style="height:40px;border-radius:8px;">
+            <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
+        </a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('courses') }}">Courses</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('contact') }}">Contact</a>
+    </nav>
+    <div class="container">
+        {% block content %}
+        <h2>Our Courses</h2>
+        <div class="courses-container">
+            {% for course in courses %}
+            <div class="course-card">
+                <h3>{{ course.title }}</h3>
+                <p>{{ course.description }}</p>
+                <a href="#">View Course</a>
+            </div>
+            {% endfor %}
+        </div>
+        {% endblock %}
+    </div>
+    <footer>
+        &copy; {{ 2025 }} VizioPath. All rights reserved.
+    </footer>
+</body>
+</html>
