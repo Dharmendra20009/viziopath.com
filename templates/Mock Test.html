@@ -1,0 +1,365 @@
+{% extends "base.html" %}
+{% block title %}AI Interview - VizioPath{% endblock %}
+{% block extra_style %}
+<style>
+    body {
+        background: linear-gradient(120deg, #22223b 60%, #ffd600 100%), 
+                    url("/static/assets/AI Mock.jpg") no-repeat center center fixed;
+        background-size: cover;
+        background-blend-mode: multiply;
+    }
+    .ai-interview-container {
+        max-width: 480px;
+        margin: 3em auto 2em auto;
+        background: rgba(30, 30, 60, 0.65);
+        border-radius: 28px;
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.7), 0 0 32px #ffd60055;
+        padding: 2em 1.5em;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        /* Animated gradient border */
+        border: 3px solid;
+        border-image: linear-gradient(120deg, #ffd600, #00eaff, #ffd600, #22223b) 1;
+        animation: floatCard 3.5s ease-in-out infinite alternate, borderGlow 4s linear infinite;
+        transition: 
+            transform 0.5s cubic-bezier(.4,1.7,.6,.97), 
+            box-shadow 0.5s, 
+            border-color 0.5s,
+            background 0.5s;
+        will-change: transform, border-color, box-shadow;
+        perspective: 1000px;
+        background-clip: padding-box;
+        backdrop-filter: blur(8px);
+    }
+    .ai-interview-container:hover {
+        transform: scale(1.06) rotateY(10deg) rotateX(5deg);
+        box-shadow: 0 20px 60px #ffd600, 0 8px 40px #00eaff;
+        border-color: #00eaff;
+        background: rgba(40, 40, 80, 0.85);
+    }
+
+    @keyframes floatCard {
+        0%   { transform: translateY(0px) scale(1) rotateY(0deg);}
+        50%  { transform: translateY(-18px) scale(1.02) rotateY(2deg);}
+        100% { transform: translateY(0px) scale(1) rotateY(0deg);}
+    }
+    @keyframes borderGlow {
+        0% { box-shadow: 0 0 24px #ffd60055, 0 8px 32px rgba(0,0,0,0.7);}
+        50% { box-shadow: 0 0 40px #00eaff88, 0 20px 60px #ffd60055;}
+        100% { box-shadow: 0 0 24px #ffd60055, 0 8px 32px rgba(0,0,0,0.7);}
+    }
+    .ai-interview-container h2 {
+        color: #FFD600;
+        margin-bottom: 1em;
+    }
+    .ai-interview-container select, .ai-interview-container button, .ai-interview-container textarea {
+        padding: 0.7em 1.2em;
+        border-radius: 8px;
+        border: none;
+        margin: 0.5em 0;
+        font-size: 1em;
+    }
+    .ai-interview-container button {
+        background: #ffd600;
+        color: #22223b;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+    .ai-interview-container button:hover {
+        background: #ff9800;
+    }
+    .interview-question {
+        margin-top: 2em;
+        background: rgba(255,255,255,0.08);
+        border-radius: 10px;
+        padding: 1.2em;
+        color: #ffd600;
+        font-size: 1.1em;
+        min-height: 60px;
+    }
+    .feedback-message {
+        margin-top: 1em;
+        color: #ffd600;
+        font-weight: bold;
+        min-height: 24px;
+    }
+    .ai-avatar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1.2em;
+        animation: fadeInAI 1.2s cubic-bezier(.4,1.7,.6,.97) both;
+    }
+    .ai-avatar svg {
+        filter: drop-shadow(0 0 16px #ffd60088) drop-shadow(0 0 8px #00eaff66);
+        background: transparent;
+        border-radius: 50%;
+    }
+    .ai-label {
+        color: #FFD600;
+        font-weight: bold;
+        margin-top: 0.5em;
+        letter-spacing: 1px;
+        font-size: 1.1em;
+        text-shadow: 0 2px 8px #00000055;
+    }
+    @keyframes fadeInAI {
+        from { opacity: 0; transform: translateY(-30px) scale(0.95);}
+        to { opacity: 1; transform: translateY(0) scale(1);}
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="ai-interview-container">
+    <!-- AI Avatar Section -->
+    <div class="ai-avatar">
+        <!-- Futuristic AI SVG Avatar -->
+        <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
+            <defs>
+                <radialGradient id="aiFace" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#FFD600" stop-opacity="0.9"/>
+                    <stop offset="100%" stop-color="#22223b" stop-opacity="1"/>
+                </radialGradient>
+                <linearGradient id="aiLines" x1="0" y1="0" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#FFD600"/>
+                    <stop offset="1" stop-color="#00eaff"/>
+                </linearGradient>
+            </defs>
+            <!-- Face -->
+            <ellipse cx="45" cy="45" rx="36" ry="36" fill="url(#aiFace)" stroke="url(#aiLines)" stroke-width="3"/>
+            <!-- Eyes -->
+            <ellipse cx="33" cy="43" rx="5" ry="7" fill="#fff"/>
+            <ellipse cx="57" cy="43" rx="5" ry="7" fill="#fff"/>
+            <ellipse cx="33" cy="45" rx="2" ry="3" fill="#22223b"/>
+            <ellipse cx="57" cy="45" rx="2" ry="3" fill="#22223b"/>
+            <!-- Smile -->
+            <path d="M35 60 Q45 68 55 60" stroke="url(#aiLines)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Circuit lines for AI effect -->
+            <path d="M45 9 L45 25" stroke="url(#aiLines)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="45" cy="9" r="2.5" fill="#FFD600" stroke="#00eaff" stroke-width="1"/>
+            <path d="M81 45 L65 45" stroke="url(#aiLines)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="81" cy="45" r="2.5" fill="#FFD600" stroke="#00eaff" stroke-width="1"/>
+            <path d="M45 81 L45 65" stroke="url(#aiLines)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="45" cy="81" r="2.5" fill="#FFD600" stroke="#00eaff" stroke-width="1"/>
+            <path d="M9 45 L25 45" stroke="url(#aiLines)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="9" cy="45" r="2.5" fill="#FFD600" stroke="#00eaff" stroke-width="1"/>
+        </svg>
+        <div class="ai-label">AI Interviewer</div>
+    </div>
+    <h2>AI Interview Simulator</h2>
+    <form id="interview-form" onsubmit="startInterview(event)">
+        <label for="topic">Choose Interview Topic:</label><br>
+        <select id="topic" required>
+            <option value="">-- Select Topic --</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="Banking and Finance">Banking and Finance</option>
+            <option value="Business Analytics">Business Analytics</option>
+            <option value="Graphic Design">Graphic Design</option>
+            <option value="Entrepreneurship">Entrepreneurship</option>
+            <option value="Human Resource Management (HRM)">Human Resource Management (HRM)</option>
+            <option value="Marketing">Marketing</option>
+            <option value="Operations Management">Operations Management</option>
+            <option value="International Business (IB)">International Business (IB)</option>
+            <option value="Information Technology (IT)">Information Technology (IT)</option>
+            <option value="Supply Chain Management (SCM)">Supply Chain Management (SCM)</option>
+            <option value="Retail Management">Retail Management</option>
+            <option value="Data Science & AI in Business">Data Science & AI in Business</option>
+            <option value="E-Commerce">E-Commerce</option>
+            <option value="Financial Technology (FinTech)">Financial Technology (FinTech)</option>
+            <option value="Blockchain Management">Blockchain Management</option>
+            <option value="Logistics & Transportation">Logistics & Transportation</option>
+            <option value="Custom">Custom Topic</option>
+        </select><br>
+        <button type="submit">Start Interview</button>
+    </form>
+    <div class="interview-question" id="question-box" style="display:none;"></div>
+    <form id="answer-form" style="display:none;" onsubmit="submitAnswer(event)">
+        <textarea id="answer-input" rows="3" placeholder="Type your answer here..." required style="width:90%;"></textarea><br>
+        <button type="submit">Submit Answer</button>
+    </form>
+    <div class="feedback-message" id="feedback"></div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script>
+const questions = {
+    "Digital Marketing": [
+        "What is SEO and why is it important?",
+        "Explain the difference between organic and paid search.",
+        "How would you measure the success of a digital marketing campaign?",
+        "What is content marketing?",
+        "Describe a successful social media strategy."
+    ],
+    "Banking and Finance": [
+        "What is the time value of money?",
+        "Explain the difference between stocks and bonds.",
+        "What is a balance sheet?",
+        "What is ROI?",
+        "Describe the process of budgeting."
+    ],
+    "Business Analytics": [
+        "What is the purpose of business analytics?",
+        "Explain the difference between descriptive, predictive, and prescriptive analytics.",
+        "How do you handle missing data in a dataset?",
+        "What is feature engineering?",
+        "Describe the bias-variance tradeoff."
+    ],
+    "Graphic Design": [
+        "What is your design process like?",
+        "How do you handle feedback and criticism of your designs?",
+        "What software do you use for graphic design and why?",
+        "Can you explain the concept of visual hierarchy?",
+        "What is the importance of typography in design?"
+    ],
+    "Entrepreneurship": [
+        "What do you think are the key qualities of an entrepreneur?",
+        "How do you evaluate business ideas?",
+        "What is your approach to market research?",
+        "How do you handle failure and setbacks?",
+        "What role does innovation play in entrepreneurship?"
+    ],
+    "Human Resource Management (HRM)": [
+        "How do you handle conflict in the workplace?",
+        "What are the key steps in the recruitment process?",
+        "Describe a time you improved employee engagement.",
+        "What is performance appraisal?",
+        "How do you ensure diversity and inclusion?"
+    ],
+    "Marketing": [
+        "What is the difference between marketing and advertising?",
+        "How do you define target audience?",
+        "What is a marketing funnel?",
+        "Explain the concept of brand equity.",
+        "How do you measure the effectiveness of a marketing campaign?"
+    ],
+    "Operations Management": [
+        "What is operations management and why is it important?",
+        "How do you ensure quality in operations?",
+        "What is supply chain management?",
+        "Explain the concept of Just-In-Time (JIT) production.",
+        "How do you handle inventory management?"
+    ],
+    "International Business (IB)": [
+        "What are the challenges of doing business internationally?",
+        "How do you handle cultural differences in business?",
+        "What is the role of international trade organizations?",
+        "Explain the concept of foreign direct investment (FDI).",
+        "How do you assess political risk in a country?"
+    ],
+    "Information Technology (IT)": [
+        "What is the role of IT in business?",
+        "How do you ensure cybersecurity in an organization?",
+        "What is cloud computing and its benefits?",
+        "Explain the difference between IT support and IT management.",
+        "How do you handle software and hardware upgrades?"
+    ],
+    "Supply Chain Management (SCM)": [
+        "What is supply chain management?",
+        "How do you optimize a supply chain?",
+        "What are the key components of a supply chain?",
+        "Explain the concept of demand forecasting.",
+        "How do you handle supplier relationships?"
+    ],
+    "Retail Management": [
+        "What are the key components of a successful retail strategy?",
+        "How do you handle inventory management in retail?",
+        "What is the importance of customer service in retail?",
+        "Explain the concept of visual merchandising.",
+        "How do you measure retail performance?"
+    ],
+    "Data Science & AI in Business": [
+        "What is the role of data science in business?",
+        "How do you handle big data?",
+        "What is machine learning and its business applications?",
+        "Explain the concept of data visualization.",
+        "How do you ensure data quality and integrity?"
+    ],
+    "E-Commerce": [
+        "What are the key components of a successful e-commerce platform?",
+        "How do you optimize product listings for better sales?",
+        "Explain the importance of user experience in e-commerce.",
+        "What is dropshipping?",
+        "How do you handle payment gateway integration?"
+    ],
+    "Financial Technology (FinTech)": [
+        "What is FinTech and how is it transforming the financial industry?",
+        "Explain the role of blockchain in FinTech.",
+        "What are some challenges faced by FinTech companies?",
+        "What is peer-to-peer lending?",
+        "Describe the impact of AI in FinTech."
+    ],
+    "Blockchain Management": [
+        "What is a distributed ledger?",
+        "Explain the concept of smart contracts.",
+        "How does blockchain ensure security and transparency?",
+        "What is a consensus mechanism?",
+        "Describe a real-world application of blockchain."
+    ],
+    "Logistics & Transportation": [
+        "What is fleet management?",
+        "How can route optimization benefit logistics companies?",
+        "Explain the importance of supply chain coordination.",
+        "What is last-mile delivery?",
+        "How do you manage warehousing efficiently?"
+    ],
+    "Custom": [
+        "Please specify your custom topic and the interviewer will ask relevant questions."
+    ]
+};
+
+let currentQuestions = [];
+let currentIndex = 0;
+
+function startInterview(event) {
+    event.preventDefault();
+    const topic = document.getElementById('topic').value;
+    const box = document.getElementById('question-box');
+    const answerForm = document.getElementById('answer-form');
+    const feedback = document.getElementById('feedback');
+    feedback.textContent = '';
+    if (topic && questions[topic]) {
+        currentQuestions = questions[topic];
+        currentIndex = 0;
+        box.style.display = 'block';
+        answerForm.style.display = 'block';
+        showQuestion();
+    } else {
+        box.style.display = 'none';
+        answerForm.style.display = 'none';
+    }
+}
+
+function showQuestion() {
+    const box = document.getElementById('question-box');
+    if (currentIndex < currentQuestions.length) {
+        box.textContent = currentQuestions[currentIndex];
+        document.getElementById('answer-input').value = '';
+        document.getElementById('feedback').textContent = '';
+    } else {
+        box.textContent = "Interview complete! Well done.";
+        document.getElementById('answer-form').style.display = 'none';
+        document.getElementById('feedback').textContent = '';
+    }
+}
+
+function submitAnswer(event) {
+    event.preventDefault();
+    const answer = document.getElementById('answer-input').value.trim();
+    const feedback = document.getElementById('feedback');
+    if (answer.length < 5) {
+        feedback.textContent = "Please provide a more detailed answer.";
+        return;
+    }
+    // You can add more advanced feedback logic here (e.g., AI evaluation)
+    feedback.textContent = "Answer submitted! Good job.";
+    setTimeout(() => {
+        currentIndex++;
+        showQuestion();
+    }, 1200);
+}
+</script>
+{% endblock %}

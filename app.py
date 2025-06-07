@@ -29,5 +29,9 @@ def contact():
         pass
     return render_template('contact.html')
 
+@app.route('/mock-test')
+def mock_test():
+    return render_template('Mock Test.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
