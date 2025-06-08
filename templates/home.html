@@ -104,6 +104,11 @@
     <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
 </a>
 
+<div class="desktop-only-message" style="display:none;">
+  This page is best viewed on a desktop or large screen.<br>
+  Please use a desktop device for the best experience.
+</div>
+
 <style>
 html { scroll-behavior: smooth; }
 .stats-section {
@@ -156,15 +161,30 @@ html { scroll-behavior: smooth; }
     background: rgba(30, 30, 60, 0.95);
 }
 @media (max-width: 900px) {
-    .stats-section {
-        flex-wrap: wrap;
-        gap: 2em;
-    }
-    .offer-card {
-        min-width: 180px;
-        font-size: 1em;
-        padding: 1em 0.5em;
-    }
+  body > *:not(.desktop-only-message) {
+    display: none !important;
+  }
+  .desktop-only-message {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #22223b;
+    color: #FFD600;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 2em;
+  }
+  .stats-section {
+    flex-wrap: wrap;
+    gap: 2em;
+  }
+  .offer-card {
+    min-width: 180px;
+    font-size: 1em;
+    padding: 1em 0.5em;
+  }
 }
 </style>
 {% endblock %}
+<meta name="viewport" content="width=1200">
