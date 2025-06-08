@@ -180,6 +180,9 @@
         <textarea id="answer-input" rows="3" placeholder="Type your answer here..." required style="width:90%;"></textarea><br>
         <button type="submit">Submit Answer</button>
     </form>
+    <button type="button" id="voice-btn" style="background:#00eaff;color:#22223b;font-weight:bold;margin-bottom:0.5em;">
+        🎤 Speak Answer
+    </button>
     <div class="feedback-message" id="feedback"></div>
 </div>
 {% endblock %}
@@ -360,6 +363,36 @@ function submitAnswer(event) {
         currentIndex++;
         showQuestion();
     }, 1200);
+}
+
+// Voice input for answer
+const voiceBtn = document.getElementById('voice-btn');
+const answerInput = document.getElementById('answer-input');
+let recognition;
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    voiceBtn.onclick = function() {
+        voiceBtn.textContent = "🎤 Listening...";
+        recognition.start();
+    };
+
+    recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        answerInput.value = transcript;
+        voiceBtn.textContent = "🎤 Speak Answer";
+    };
+
+    recognition.onerror = function() {
+        voiceBtn.textContent = "🎤 Speak Answer";
+        alert("Sorry, voice recognition failed. Try again.");
+    };
+} else {
+    voiceBtn.style.display = "none";
 }
 </script>
 {% endblock %}
