@@ -77,6 +77,23 @@
             flex-wrap: wrap;
             gap: 1.5em;
         }
+
+        @media (max-width: 700px) {
+            .courses-container {
+                flex-direction: column;
+                gap: 1em;
+                align-items: stretch;
+            }
+            .container {
+                padding: 1em;
+                margin: 0;
+                max-width: 100vw;
+            }
+            body {
+                background-size: cover !important;
+                background-position: center !important;
+            }
+        }
     </style>
 </head>
 <body>
