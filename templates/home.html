@@ -104,11 +104,6 @@
     <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
 </a>
 
-<div class="desktop-only-message" style="display:none;">
-  This page is best viewed on a desktop or large screen.<br>
-  Please use a desktop device for the best experience.
-</div>
-
 <style>
 html { scroll-behavior: smooth; }
 .stats-section {
@@ -161,30 +156,58 @@ html { scroll-behavior: smooth; }
     background: rgba(30, 30, 60, 0.95);
 }
 @media (max-width: 900px) {
-  body > *:not(.desktop-only-message) {
-    display: none !important;
-  }
-  .desktop-only-message {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #22223b;
-    color: #FFD600;
-    font-size: 1.5em;
-    text-align: center;
-    padding: 2em;
-  }
-  .stats-section {
-    flex-wrap: wrap;
-    gap: 2em;
-  }
-  .offer-card {
-    min-width: 180px;
-    font-size: 1em;
-    padding: 1em 0.5em;
-  }
+    .stats-section {
+        flex-wrap: wrap;
+        gap: 2em;
+    }
+    .offer-card {
+        min-width: 180px;
+        font-size: 1em;
+        padding: 1em 0.5em;
+    }
+}
+@media (max-width: 700px) {
+    .stats-section {
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+        margin: 2em 0 1em 0;
+    }
+    .stat {
+        min-width: 0;
+        width: 90vw;
+        margin: 0 auto;
+    }
+    .offer-card {
+        min-width: 0;
+        max-width: 95vw;
+        width: 95vw;
+        font-size: 1em;
+        padding: 1em 0.5em;
+        margin-bottom: 1em;
+    }
+    .offer-card:hover {
+        transform: none;
+        box-shadow: 0 8px 24px rgba(255, 214, 0, 0.15), 0 1.5px 8px #ffd600;
+    }
+    .brand-logo {
+        flex-direction: row;
+        justify-content: center;
+        width: 100vw;
+        margin: 0 auto;
+    }
+    #home, #what-we-offer {
+        margin: 2em 0.5em;
+    }
+    h1, h2 {
+        font-size: 1.5em !important;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        background-size: cover;
+        background-position: center;
+    }
 }
 </style>
 {% endblock %}
-<meta name="viewport" content="width=1200">
