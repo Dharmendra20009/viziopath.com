@@ -161,6 +161,48 @@
         box-shadow: 0 12px 32px rgba(255, 216, 0, 0.35);
         border-color: #ff9800;
     }
+
+    @media (max-width: 700px) {
+        .about-card-section {
+            flex-direction: column;
+            gap: 1em;
+            align-items: stretch;
+            margin: 1em 0;
+        }
+        .about-card {
+            max-width: 98vw !important;
+            width: 98vw !important;
+            min-width: 0 !important;
+            margin: 0 auto 1em auto !important;
+            font-size: 1em;
+            padding: 1em 0.5em;
+            word-break: break-word;
+            box-sizing: border-box;
+        }
+        .about-card h3 {
+            font-size: 1.15em;
+            text-align: center;
+        }
+        .about-card ul {
+            padding-left: 1.2em;
+            font-size: 1em;
+        }
+        .about-card ul li {
+            margin-bottom: 0.4em;
+            word-break: break-word;
+        }
+        .card-hero img {
+            width: 60px !important;
+            height: 60px !important;
+        }
+        .watch-video-btn {
+            width: 90vw;
+            font-size: 1em;
+            padding: 0.7em 0.5em;
+            margin: 1em auto 0 auto;
+            justify-content: center;
+        }
+    }
 </style>
 {% endblock %}
 {% block content %}
