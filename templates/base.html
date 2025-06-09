@@ -18,22 +18,45 @@
         .navbar {
             display: flex;
             justify-content: flex-end;
-            background: #0a1931; /* Change this to your desired color */
+            background: #0a1931;
             border-bottom: 2px solid #007bff;
             padding: 1em;
             gap: 2em;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
         }
 
         .navbar a {
-            color: #fff; /* White text for navbar links */
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.2s;
+            padding: 0.6em 1.2em;
+            border-radius: 12px;
+            background: linear-gradient(145deg, #0a1931 60%, #0056b3 100%);
+            box-shadow: 0 6px 24px #007bff33, 0 2px 8px #22223b44, 0 1px 0 #fff3 inset;
+            position: relative;
+            margin: 0 0.2em;
+            display: inline-block;
+            transition:
+                color 0.2s,
+                box-shadow 0.3s,
+                transform 0.2s,
+                background 0.3s;
+            perspective: 300px;
+            font-size: 1.08em;
+            letter-spacing: 0.5px;
+            border: 1.5px solid #0056b3;
         }
 
-        .navbar a:hover {
-            color: #FFD600; /* Yellow on hover */
+        .navbar a:hover, .navbar a:focus {
+            color: #FFD600;
+            background: linear-gradient(145deg, #0056b3 60%, #0a1931 100%);
+            box-shadow: 0 12px 36px #FFD60055, 0 2px 12px #00eaff66, 0 1px 0 #fff3 inset;
+            transform: translateY(-4px) scale(1.08) rotateX(10deg);
+            text-shadow: 0 2px 8px #FFD60088, 0 1px 4px #00eaff88;
+            outline: none;
+            border-color: #FFD600;
         }
 
         .container {
