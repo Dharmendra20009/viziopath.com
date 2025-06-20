@@ -94,6 +94,7 @@
         color: #fff;
         margin-bottom: 1.5em; /* Optional: space between rows */
         transition: box-shadow 0.3s, transform 0.3s;
+        text-align: center;
     }
     .about-card:hover {
         box-shadow: 0 12px 32px rgba(0,0,0,0.7); /* Even stronger shadow on hover */
@@ -134,7 +135,7 @@
         background: linear-gradient(90deg, #ffd600 0%, #ff9800 100%);
         color: #0a1931;
         transform: scale(1.07);
-        box-shadow: 0 8px 24px rgba(255, 216, 0, 0.25);
+        box-shadow:
     }
     .watch-video-btn svg {
         width: 1.5em;
@@ -160,6 +161,34 @@
         transform: scale(1.08) rotate(-3deg);
         box-shadow: 0 12px 32px rgba(255, 216, 0, 0.35);
         border-color: #ff9800;
+    }
+
+    .search-bar {
+        width: 80%;
+        max-width: 400px;
+        padding: 0.7em 1em;
+        border-radius: 24px;
+        border: 1.5px solid #FFD600;
+        font-size: 1.1em;
+        outline: none;
+        margin: 0 auto;
+        box-shadow: 0 2px 12px #ffd60022;
+        transition: border-color 0.2s;
+    }
+    .search-bar:focus {
+        border-color: #00eaff;
+    }
+
+    .card-img {
+        width: 100%;
+        max-width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin: 0 auto 1em auto;
+        display: block;
+        box-shadow: 0 2px 12px #ffd60033;
+        background: #fff;
     }
 
     @media (max-width: 700px) {
@@ -210,6 +239,9 @@
     <h1 style="color: #fff;">Welcome to VizioPath</h1>
     <p style="color: #fff;">Your gateway to learning! Explore our wide range of courses and start your educational journey today.</p>
     <a href="{{ url_for('courses') }}" style="display:inline-block;padding:10px 20px;background:#007bff;color:#fff;text-decoration:none;border-radius:5px;margin-top:1em;">Subscribe Now</a>
+</div>
+<div class="search-bar-container" style="text-align:center; margin-bottom:1.5em;">
+    <input type="text" id="course-search" placeholder="Search VizioPath courses..." class="search-bar">
 </div>
 <div class="about-card-section">
     <div class="about-card">
@@ -518,5 +550,111 @@
             Watch Video
         </a>
     </div>
+    <div class="about-card">
+    <img src="/static/assets/courses.jpg" alt="Course Image" class="card-img">
+    <h3>Data Science</h3>
+    <ul>
+        <li>Learn data analysis, visualization, and predictive modeling.</li>
+        <li>Hands-on projects and real-world datasets.</li>
+        <li>Career guidance for data scientist roles.</li>
+    </ul>
 </div>
+<div class="about-card">
+        <h3>Artificial Intelligence & Machine Learning</h3>
+        <ul>
+            <li>Understand AI concepts and machine learning algorithms.</li>
+            <li>Build intelligent systems and predictive models.</li>
+            <li>Industry-relevant projects and mentorship.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Cyber Security</h3>
+        <ul>
+            <li>Protect systems and networks from cyber threats.</li>
+            <li>Learn ethical hacking and security best practices.</li>
+            <li>Prepare for top security certifications.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Cloud Computing</h3>
+        <ul>
+            <li>Master AWS, Azure, and Google Cloud platforms.</li>
+            <li>Deploy scalable applications and manage cloud resources.</li>
+            <li>Get certified and job-ready for cloud careers.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Augmented Reality (AR) & Virtual Reality (VR)</h3>
+        <ul>
+            <li>Design immersive AR/VR experiences and applications.</li>
+            <li>Hands-on with Unity, Unreal Engine, and ARKit/ARCore.</li>
+            <li>Explore careers in gaming, education, and simulation.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>DevOps & Automation</h3>
+        <ul>
+            <li>Master CI/CD pipelines, Docker, Kubernetes, and automation tools.</li>
+            <li>Streamline software delivery and infrastructure management.</li>
+            <li>Prepare for DevOps Engineer roles.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Big Data Analytics</h3>
+        <ul>
+            <li>Work with Hadoop, Spark, and large-scale data processing.</li>
+            <li>Analyze and visualize massive datasets.</li>
+            <li>Industry projects and data engineering skills.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>UI/UX Design</h3>
+        <ul>
+            <li>Learn user interface and user experience design principles.</li>
+            <li>Hands-on with Figma, Adobe XD, and prototyping tools.</li>
+            <li>Build portfolios for design careers.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Robotics</h3>
+        <ul>
+            <li>Introduction to robotics, sensors, and actuators.</li>
+            <li>Build and program robots using Arduino and Raspberry Pi.</li>
+            <li>Explore automation and mechatronics careers.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Digital Marketing Analytics</h3>
+        <ul>
+            <li>Analyze digital campaigns using Google Analytics and other tools.</li>
+            <li>Measure ROI and optimize marketing strategies.</li>
+            <li>Prepare for roles in marketing analytics and strategy.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Ethical Hacking & Penetration Testing</h3>
+        <ul>
+            <li>Learn ethical hacking techniques and tools.</li>
+            <li>Perform penetration testing and vulnerability assessments.</li>
+            <li>Prepare for CEH and other security certifications.</li>
+        </ul>
+    </div>
+    <div class="about-card">
+        <h3>Data Visualization</h3>
+        <ul>
+            <li>Create interactive dashboards and visualizations.</li>
+            <li>Hands-on with Tableau, Power BI, and D3.js.</li>
+            <li>Communicate insights effectively to stakeholders.</li>
+        </ul>
+    </div>
+</div>
+<script>
+document.getElementById('course-search').addEventListener('input', function() {
+    const query = this.value.toLowerCase();
+    document.querySelectorAll('.about-card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(query) ? '' : 'none';
+    });
+});
+</script>
 {% endblock %}
