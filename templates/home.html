@@ -99,6 +99,55 @@
     </div>
 </div>
 
+<!-- About Section -->
+<div id="about" style="margin: 4em 0; text-align: center;">
+    <h2 style="color:#fff; font-size:2.2em; margin-bottom:1.5em;">About Our Courses</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:2em;justify-content:center;">
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Artificial Intelligence & Machine Learning</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Cyber Security</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Cloud Computing</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Web Development</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Internet of Things (IoT)</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Blockchain Technology</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Mobile Application Development</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Game Development</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Networking & Security</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Software Development</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Multimedia & Animation</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">UI/UX Design</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Big Data Analytics</h3>
+        </div>
+        <div class="about-card">
+            <h3 style="color:#FFD600;">Robotics</h3>
+        </div>
+    </div>
+</div>
+
 <a href="#home" class="brand-logo" style="display:flex;align-items:center;gap:0.5em;margin-right:auto;">
     <img src="/static/assets/logo2.0.jpg" alt="VizioPath Logo" style="height:40px;border-radius:8px;">
     <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
@@ -155,12 +204,37 @@ html { scroll-behavior: smooth; }
     box-shadow: 0 16px 48px rgba(255, 214, 0, 0.25), 0 4px 32px #ffd600;
     background: rgba(30, 30, 60, 0.95);
 }
+.about-card {
+    background: rgba(6, 2, 61, 0.85);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 1.5px 8px #ffd600;
+    padding: 1.5em 1.2em;
+    color: #FFD600;
+    font-size: 1.35em;
+    font-weight: bold;
+    min-width: 260px;
+    max-width: 340px;
+    margin-bottom: 1em;
+    text-align: center;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+}
+.about-card:hover {
+    transform: scale(1.06) translateY(-6px);
+    box-shadow: 0 16px 48px rgba(255, 214, 0, 0.25), 0 4px 32px #ffd600;
+    background: rgba(30, 30, 60, 0.95);
+}
 @media (max-width: 900px) {
     .stats-section {
         flex-wrap: wrap;
         gap: 2em;
     }
     .offer-card {
+        min-width: 180px;
+        font-size: 1em;
+        padding: 1em 0.5em;
+    }
+    .about-card {
         min-width: 180px;
         font-size: 1em;
         padding: 1em 0.5em;
@@ -212,7 +286,19 @@ html { scroll-behavior: smooth; }
         padding: 1em 0.5em;
         margin-bottom: 1em;
     }
+    .about-card {
+        min-width: 0;
+        max-width: 95vw;
+        width: 95vw;
+        font-size: 1em;
+        padding: 1em 0.5em;
+        margin-bottom: 1em;
+    }
     .offer-card:hover {
+        transform: none;
+        box-shadow: 0 8px 24px rgba(255, 214, 0, 0.15), 0 1.5px 8px #ffd600;
+    }
+    .about-card:hover {
         transform: none;
         box-shadow: 0 8px 24px rgba(255, 214, 0, 0.15), 0 1.5px 8px #ffd600;
     }
