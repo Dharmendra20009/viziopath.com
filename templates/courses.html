@@ -191,6 +191,83 @@
         background: #fff;
     }
 
+    /* New Skill Highlights Section */
+    .skill-highlights-section {
+        margin: 3em 0 2em 0;
+        padding: 1.5em 0;
+        background: linear-gradient(90deg, #0f2027 0%, #2c5364 100%);
+        border-radius: 18px;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+        overflow-x: auto;
+    }
+    .skill-highlights-row {
+        display: flex;
+        gap: 1.2em;
+        padding: 0 1.5em;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+    .skill-card {
+        min-width: 220px;
+        max-width: 260px;
+        background: #fff;
+        color: #22223b;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+        padding: 1.2em 1em 1.5em 1em;
+        text-align: center;
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        transition: transform 0.25s, box-shadow 0.25s;
+        position: relative;
+    }
+    .skill-card:hover {
+        transform: translateY(-8px) scale(1.04);
+        box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    }
+    .skill-icon {
+        font-size: 2.5em;
+        margin-bottom: 0.7em;
+        color: #ffd600;
+        display: block;
+    }
+    .skill-card h4 {
+        margin: 0.2em 0 0.7em 0;
+        font-size: 1.15em;
+        color: #0f2027;
+        font-weight: bold;
+    }
+    .skill-card p {
+        font-size: 0.98em;
+        color: #333;
+        margin-bottom: 1em;
+    }
+    .skill-card a {
+        display: inline-block;
+        background: #007bff;
+        color: #fff;
+        padding: 0.5em 1.2em;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1em;
+        transition: background 0.2s;
+    }
+    .skill-card a:hover {
+        background: #0056b3;
+    }
+    @media (max-width: 700px) {
+        .skill-highlights-row {
+            gap: 0.7em;
+            padding: 0 0.5em;
+        }
+        .skill-card {
+            min-width: 80vw;
+            max-width: 90vw;
+            font-size: 1em;
+        }
+    }
+
     @media (max-width: 700px) {
         .about-card-section {
             flex-direction: column;
@@ -244,6 +321,26 @@
     <input type="text" id="course-search" placeholder="Search VizioPath courses..." class="search-bar">
 </div>
 <div class="about-card-section">
+    <!-- Share Market Card: Add this as the first .about-card in the section -->
+<div class="about-card">
+    <div class="card-hero" style="text-align:center;margin-bottom:1em;">
+        <img src="/static/assets/ft.jpg" alt="Share Market" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
+    </div>
+    <h3>Share Market</h3>
+    <ul style="text-align:left;">
+        <li>Stock market basics</li>
+        <li>Trading & investing strategies</li>
+        <li>Technical & fundamental analysis</li>
+        <li>Risk management</li>
+        <li>Portfolio building</li>
+        <li>Market psychology</li>
+        <li>Live market examples</li>
+    </ul>
+    <a href="https://www.youtube.com/watch?v=ZV6zK2F7FhA" target="_blank" class="watch-video-btn">
+        <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9z"/><circle cx="12" cy="12" r="11" fill="none" stroke="#22223b" stroke-width="2"/></svg>
+        Watch Video
+    </a>
+</div>
     <div class="about-card">
         <div class="card-hero" style="text-align:center;margin-bottom:1em;">
             <img src="/static/assets/digital.jpg" alt="Digital Marketing" style="width:80px;height:80px;object-fit:cover;border-radius:50%;">
@@ -575,6 +672,42 @@
             <li>Hands-on with Tableau, Power BI, and D3.js.</li>
             <li>Communicate insights effectively to stakeholders.</li>
         </ul>
+    </div>
+</div>
+<!-- New Skill Highlights Section -->
+<div class="skill-highlights-section">
+    <h2 style="color:#ffd600;text-align:center;margin-bottom:1em;letter-spacing:1px;">Skill Highlights</h2>
+    <div class="skill-highlights-row">
+        <div class="skill-card">
+            <span class="skill-icon">💡</span>
+            <h4>Critical Thinking</h4>
+            <p>Sharpen your problem-solving and decision-making skills for real-world business challenges.</p>
+            <a href="https://www.youtube.com/watch?v=6OLPL5p0fMg" target="_blank">Learn More</a>
+        </div>
+        <div class="skill-card">
+            <span class="skill-icon">🗣️</span>
+            <h4>Communication</h4>
+            <p>Master effective communication for leadership, teamwork, and client relations.</p>
+            <a href="https://www.youtube.com/watch?v=HAnw168huqA" target="_blank">Learn More</a>
+        </div>
+        <div class="skill-card">
+            <span class="skill-icon">🤝</span>
+            <h4>Collaboration</h4>
+            <p>Work efficiently in teams, manage conflicts, and achieve common goals.</p>
+            <a href="https://www.youtube.com/watch?v=QGg5bV1Hc18" target="_blank">Learn More</a>
+        </div>
+        <div class="skill-card">
+            <span class="skill-icon">🧠</span>
+            <h4>Emotional Intelligence</h4>
+            <p>Develop self-awareness, empathy, and resilience for personal and professional growth.</p>
+            <a href="https://www.youtube.com/watch?v=Y7m9eNoB3NU" target="_blank">Learn More</a>
+        </div>
+        <div class="skill-card">
+            <span class="skill-icon">⏰</span>
+            <h4>Time Management</h4>
+            <p>Boost productivity and balance priorities with proven time management techniques.</p>
+            <a href="https://www.youtube.com/watch?v=oTugjssqOT0" target="_blank">Learn More</a>
+        </div>
     </div>
 </div>
 <script>
