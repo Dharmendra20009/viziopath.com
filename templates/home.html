@@ -11,6 +11,19 @@
 </style>
 {% endblock %}
 {% block content %}
+<!-- SEO Meta Tags -->
+<meta name="description" content="VizioPath: Your gateway to learning. Explore courses in Digital Marketing, Finance, Analytics, Design, IT, and more.">
+<meta name="keywords" content="VizioPath, viziopath.info, online courses, digital marketing, finance, business analytics, graphic design, entrepreneurship, HRM, IT, data science, AI, web development, education, learning">
+<meta name="author" content="VizioPath">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph for social sharing -->
+<meta property="og:title" content="VizioPath - Your Gateway to Learning">
+<meta property="og:description" content="Explore top courses in business, technology, and design. Start your educational journey with VizioPath.">
+<meta property="og:image" content="{{ url_for('static', filename='assets/logo2.0.jpg') }}">
+<meta property="og:url" content="{{ request.url }}">
+<meta property="og:type" content="website">
+
 <!-- Home Section -->
 <div id="home" style="text-align: center; margin-top: 3em; margin-bottom: 2em;">
     <h1 style="color: #fff;">Welcome to VizioPath</h1>

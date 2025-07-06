@@ -35,3 +35,16 @@ def mock_test():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VizioPath{% endblock %}</title>
+    <!-- SEO Meta Tags ... -->
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>
