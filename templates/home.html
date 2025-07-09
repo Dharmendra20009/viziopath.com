@@ -111,15 +111,15 @@
         <div class="stat-label">Students Impacted</div>
     </div>
     <div class="stat">
-        <span class="stat-number purple">20+</span>
-        <div class="stat-label">Management specializations</div>
+        <span class="stat-number purple">107+</span>
+        <div class="stat-label">Tech & Management Courses</div>
     </div>
     <div class="stat">
         <span class="stat-number blue">1000+</span>
-        <div class="stat-label">Industry Problems</div>
+        <div class="stat-label">Real-World Challenges</div>
     </div>
     <div class="stat">
-        <span class="stat-number purple">92%</span>
+        <span class="stat-number purple">99.99%</span>
         <div class="stat-label">User Satisfaction</div>
     </div>
 </div>
@@ -159,78 +159,306 @@
 </div>
 -->
 
-<!-- What We Offer Section -->
-<div id="what-we-offer" style="margin: 4em 0; text-align: center;">
-    <h2 style="color:#fff; font-size:2.2em; margin-bottom:1.5em;">What We Offer</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:2em;justify-content:center;">
-        <div class="offer-card">Digital Marketing</div>
-        <div class="offer-card">Banking and Finance</div>
-        <div class="offer-card">Business Analytics</div>
-        <div class="offer-card">Graphic Design</div>
-        <div class="offer-card">Entrepreneurship</div>
-        <div class="offer-card">Human Resource Management (HRM)</div>
-        <div class="offer-card">Marketing</div>
-        <div class="offer-card">Operations Management</div>
-        <div class="offer-card">International Business (IB)</div>
-        <div class="offer-card">Information Technology (IT)</div>
-        <div class="offer-card">Supply Chain Management (SCM)</div>
-        <div class="offer-card">Retail Management</div>
-        <div class="offer-card">Data Science & AI in Business</div>
-        <div class="offer-card">E-Commerce</div>
-        <div class="offer-card">Financial Technology (FinTech)</div>
-        <div class="offer-card">Blockchain Management</div>
-    </div>
-</div>
 
-<!-- About Section -->
-<div id="about" style="margin: 4em 0; text-align: center;">
-    <h2 style="color:#fff; font-size:2.2em; margin-bottom:1.5em;">About Our Courses</h2>
-    <div style="display:flex;flex-wrap:wrap;gap:2em;justify-content:center;">
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Artificial Intelligence & Machine Learning</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Cyber Security</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Cloud Computing</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Web Development</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Internet of Things (IoT)</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Blockchain Technology</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Mobile Application Development</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Game Development</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Networking & Security</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Software Development</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Multimedia & Animation</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">UI/UX Design</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Big Data Analytics</h3>
-        </div>
-        <div class="about-card">
-            <h3 style="color:#FFD600;">Robotics</h3>
-        </div>
-    </div>
-</div>
 
+
+<!-- 3D Cards Section: All Courses Combined -->
+<div id="explore-3d" style="margin: 4em 0; text-align: center;">
+    <h2 style="color:#fff; font-size:2.2em; margin-bottom:1.5em;">Explore Our Courses & Specializations</h2>
+    <div id="three-d-cards" class="three-d-cards-container"></div>
+</div>
+<script>
+// List of all courses and specializations
+const courses = [
+    {
+        title: "Share Market",
+        desc: "Stock market basics, trading strategies, technical & fundamental analysis, risk management, and investment tools.",
+        img: "/static/assets/finance.jpg" // You can use a more relevant image if available, e.g., /static/assets/sharemarket.jpg
+    },
+    {
+        title: "Digital Marketing",
+        desc: "SEO, SEM, content creation, social media, analytics, paid ads, e-commerce, and more.",
+        img: "/static/assets/marketing.jpg"
+    },
+    {
+        title: "Banking and Finance",
+        desc: "Financial analysis, accounting, risk management, fintech, compliance, and data analysis.",
+        img: "/static/assets/finance.jpg"
+    },
+    {
+        title: "Business Analytics",
+        desc: "Data analysis, visualization, SQL, Excel, Python/R, BI tools, and problem-solving.",
+        img: "/static/assets/analyst.jpg"
+    },
+    {
+        title: "Graphic Design",
+        desc: "Creativity, typography, branding, Adobe Suite, UI/UX basics, and visual communication.",
+        img: "/static/assets/design.jpg"
+    },
+    {
+        title: "Entrepreneurship",
+        desc: "Innovation, leadership, business planning, risk-taking, networking, and marketing.",
+        img: "/static/assets/entrepreneur.jpg"
+    },
+    {
+        title: "Artificial Intelligence & Machine Learning",
+        desc: "AI concepts, ML algorithms, data science, neural networks, and real-world projects.",
+        img: "/static/assets/AI.jpg"
+    },
+    {
+        title: "Cyber Security",
+        desc: "Network security, ethical hacking, cryptography, risk management, and compliance.",
+        img: "/static/assets/ft.jpg"
+    },
+    {
+        title: "Cloud Computing",
+        desc: "Cloud platforms, virtualization, deployment, DevOps, and cloud security.",
+        img: "/static/assets/it1.jpg"
+    },
+    {
+        title: "Web Development",
+        desc: "HTML, CSS, JavaScript, frameworks, backend, databases, and deployment.",
+        img: "/static/assets/e commerce.jpg"
+    },
+    {
+        title: "Internet of Things (IoT)",
+        desc: "IoT devices, sensors, connectivity, data analytics, and smart solutions.",
+        img: "/static/assets/om.jpg"
+    },
+    {
+        title: "Blockchain Technology",
+        desc: "Distributed ledgers, smart contracts, cryptocurrencies, and blockchain applications.",
+        img: "/static/assets/bm.jpg"
+    },
+    {
+        title: "Mobile Application Development",
+        desc: "Android/iOS development, UI/UX, APIs, and app deployment.",
+        img: "/static/assets/mobile.about.jpg"
+    },
+    {
+        title: "Game Development",
+        desc: "Game engines, design, graphics, interactivity, and publishing.",
+        img: "/static/assets/about3.jpg"
+    },
+    {
+        title: "Networking & Security",
+        desc: "Network design, protocols, security, troubleshooting, and administration.",
+        img: "/static/assets/International.jpg"
+    },
+    {
+        title: "Software Development",
+        desc: "Programming, SDLC, testing, version control, and deployment.",
+        img: "/static/assets/scm.jpg"
+    },
+    {
+        title: "Multimedia & Animation",
+        desc: "2D/3D animation, video editing, sound design, and multimedia tools.",
+        img: "/static/assets/AI Mock.jpg"
+    },
+    {
+        title: "UI/UX Design",
+        desc: "User research, wireframing, prototyping, usability, and design systems.",
+        img: "/static/assets/lt.jpg"
+    },
+    {
+        title: "Big Data Analytics",
+        desc: "Big data tools, Hadoop, Spark, data mining, and visualization.",
+        img: "/static/assets/courses.jpg"
+    },
+    {
+        title: "Robotics",
+        desc: "Robotics design, sensors, automation, programming, and AI integration.",
+        img: "/static/assets/robotics.jpg"
+    },
+    {
+        title: "Retail Management",
+        desc: "Retail operations, merchandising, supply chain, and customer experience.",
+        img: "/static/assets/retail.jpg"
+    },
+    {
+        title: "Human Resource Management",
+        desc: "Recruitment, training, performance management, and HR analytics.",
+        img: "/static/assets/hrm.jpg"
+    },
+    {
+        title: "Operations Management",
+        desc: "Process optimization, logistics, quality control, and project management.",
+        img: "/static/assets/om.jpg"
+    }
+];
+
+// Shuffle courses for randomness
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+const shuffledCourses = shuffle([...courses]);
+const container = document.getElementById('three-d-cards');
+shuffledCourses.forEach(course => {
+    const card = document.createElement('div');
+    card.className = 'three-d-card';
+    card.innerHTML = `
+        <div class="three-d-card-img-wrap">
+            <img src="${course.img}" alt="${course.title}" class="three-d-card-img" />
+        </div>
+        <div class="three-d-card-title">${course.title}</div>
+        <div class="three-d-card-desc" style="color:#fff;font-size:1em;margin-bottom:1em;">${course.desc}</div>
+        <a href="#" class="three-d-card-btn" style="color:#fff;background:#007bff;padding:0.5em 1.1em;border-radius:5px;text-decoration:none;font-weight:bold;display:inline-block;">View Course</a>
+    `;
+    container.appendChild(card);
+});
+</script>
+<style>
+.three-d-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+    justify-content: center;
+}
+.three-d-card {
+    background: rgba(255,255,255,0.07);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 1.5px 8px #ffd600;
+    width: 240px;
+    min-height: 320px;
+    margin-bottom: 1em;
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s;
+    cursor: pointer;
+    perspective: 800px;
+    position: relative;
+    overflow: hidden;
+}
+.three-d-card:hover {
+    transform: scale(1.07) rotateY(8deg) translateY(-8px);
+    box-shadow: 0 16px 48px rgba(255, 214, 0, 0.25), 0 4px 32px #ffd600;
+    z-index: 2;
+}
+.three-d-card-img-wrap {
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.2em;
+    margin-bottom: 1em;
+    perspective: 600px;
+}
+.three-d-card-img {
+    width: 90%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    transform: rotateX(12deg) scale(1.05);
+    transition: transform 0.3s;
+}
+.three-d-card:hover .three-d-card-img {
+    transform: rotateX(0deg) scale(1.12);
+}
+.three-d-card-title {
+    color: #FFD600;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin-bottom: 1.2em;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+@media (max-width: 900px) {
+    .three-d-card {
+        width: 160px;
+        min-height: 220px;
+    }
+    .three-d-card-img {
+        height: 80px;
+    }
+}
+@media (max-width: 700px) {
+    body {
+        background-image: url("/static/assets/pic12.jpg");
+        background-size: 15%;           /* Smaller image */
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        min-height: 100vh;
+        width: 100vw;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    /* Optional: overlay for better text contrast */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(10,10,30,0.35);
+        z-index: 0;
+        pointer-events: none;
+    }
+    /* Make sure your main content is above the overlay */
+    #main, .container, .content {
+        position: relative;
+        z-index: 1;
+    }
+    .stats-section {
+        flex-direction: column;
+        gap: 1.5em;
+        align-items: center;
+        margin: 2em 0 1em 0;
+    }
+    .stat {
+        min-width: 0;
+        width: 90vw;
+        margin: 0 auto;
+    }
+    .offer-card {
+        min-width: 0;
+        max-width: 95vw;
+        width: 95vw;
+        font-size: 1em;
+        padding: 1em 0.5em;
+        margin-bottom: 1em;
+    }
+    .about-card {
+        min-width: 0;
+        max-width: 95vw;
+        width: 95vw;
+        font-size: 1em;
+        padding: 1em 0.5em;
+        margin-bottom: 1em;
+    }
+    .offer-card:hover {
+        transform: none;
+        box-shadow: 0 8px 24px rgba(255, 214, 0, 0.15), 0 1.5px 8px #ffd600;
+    }
+    .about-card:hover {
+        transform: none;
+        box-shadow: 0 8px 24px rgba(255, 214, 0, 0.15), 0 1.5px 8px #ffd600;
+    }
+    .brand-logo {
+        flex-direction: row;
+        justify-content: center;
+        width: 100vw;
+        margin: 0 auto;
+    }
+    #home, #what-we-offer {
+        margin: 2em 0.5em;
+    }
+    h1, h2 {
+        font-size: 1.5em !important;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        background-size: cover;
+        background-position: center;
+    }
+}
+</style>
 <a href="#home" class="brand-logo" style="display:flex;align-items:center;gap:0.5em;margin-right:auto;">
     <img src="/static/assets/logo2.0.jpg" alt="VizioPath Logo" style="height:40px;border-radius:8px;">
     <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
