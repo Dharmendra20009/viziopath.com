@@ -19,18 +19,90 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
     }
+    .animated-gradient {
+        background: linear-gradient(90deg, #FFD600, #ec9909, #eaac0d, #FFD600 80%);
+        background-size: 200% auto;
+        color: #fff;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientMove 2.5s linear infinite;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+    @keyframes gradientMove {
+        0% { background-position: 0% 50%; }
+        100% { background-position: 100% 50%; }
+    }
+    .typewriter {
+        display: inline-block;
+        border-right: 2px solid #FFD600;
+        white-space: nowrap;
+        overflow: hidden;
+        font-size: 1.3em;
+        color: #FFD600;
+        font-family: inherit;
+        animation: blink-caret 0.75s step-end infinite;
+        min-height: 1.3em;
+    }
+    @keyframes blink-caret {
+        0%, 100% { border-color: #FFD600; }
+        50% { border-color: transparent; }
+    }
 </style>
 {% endblock %}
 {% block content %}
 <!-- Home Section -->
 <div id="home" style="text-align: center; margin-top: 3em; margin-bottom: 2em;">
-    <h1 style="color: #fff;">Welcome to VizioPath</h1>
-    <p style="color: #fff;">Your gateway to learning! Explore our wide range of courses and start your educational journey today.</p>
+    <h1 style="color: #fff;">
+        Welcome to <span class="animated-gradient">VizioPath</span>
+    </h1>
+    <p>
+        <span id="typewriter" class="typewriter"></span>
+    </p>
     <a href="#courses" style="display:inline-block;padding:10px 20px;background:#007bff;color:#fff;text-decoration:none;border-radius:5px;margin-top:1em;">Services</a>
     <div style="margin-top: 0.7em; font-size: 2.5em; color: #FFD600;">
         ★★★★<span style="color:#FFD600;">☆</span>
     </div>
 </div>
+<script>
+    // Typewriter effect for subheading
+    const phrases = [
+        "Your gateway to learning!",
+        "Explore our wide range of courses.",
+        "Start your educational journey today.",
+        "Empowering students for the future."
+    ];
+    let currentPhrase = 0;
+    let currentChar = 0;
+    let isDeleting = false;
+    const typewriter = document.getElementById('typewriter');
+
+    function type() {
+        const phrase = phrases[currentPhrase];
+        if (isDeleting) {
+            currentChar--;
+            typewriter.textContent = phrase.substring(0, currentChar);
+            if (currentChar === 0) {
+                isDeleting = false;
+                currentPhrase = (currentPhrase + 1) % phrases.length;
+                setTimeout(type, 700);
+            } else {
+                setTimeout(type, 40);
+            }
+        } else {
+            currentChar++;
+            typewriter.textContent = phrase.substring(0, currentChar);
+            if (currentChar === phrase.length) {
+                isDeleting = true;
+                setTimeout(type, 1200);
+            } else {
+                setTimeout(type, 70);
+            }
+        }
+    }
+    if (typewriter) type();
+</script>
 
 <!-- Stats Section -->
 <div class="stats-section">
