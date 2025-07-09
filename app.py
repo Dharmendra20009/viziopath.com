@@ -10,7 +10,7 @@ def home():
 def courses():
     # Example static course list
     course_list = [
-         {"title": "Digital Marketing", "description": "Learn SEO, SEM, content creation, social media management, email marketing, analytics, paid ads, design tools, e-commerce marketing, and communication."},
+        {"title": "Digital Marketing", "description": "Learn SEO, SEM, content creation, social media management, email marketing, analytics, paid ads, design tools, e-commerce marketing, and communication."},
         {"title": "Banking and Finance", "description": " financial analysis, accounting, risk management, investment planning, banking operations, fintech, regulatory compliance, customer service, and data analysis."},
         {"title": "Business analytics", "description": " data analysis, statistical modeling, data visualization, SQL, Excel, Python/R, predictive analytics, business intelligence tools, and problem-solving."},
         {"title": "Graphic Design", "description": " creativity, typography, color theory, layout design, branding, Adobe Creative Suite (Photoshop, Illustrator, InDesign), UI/UX basics, and visual communication."},
@@ -25,7 +25,7 @@ def about():
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
     if request.method == 'POST':
-        # Here you can handle form submission if needed
+        # Handle form submission if needed
         pass
     return render_template('contact.html')
 
@@ -33,18 +33,10 @@ def contact():
 def mock_test():
     return render_template('Mock Test.html')
 
+# Uncomment if you have a services page
+# @app.route('/services')
+# def services():
+#     return render_template('services.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}VizioPath{% endblock %}</title>
-    <!-- SEO Meta Tags ... -->
-</head>
-<body>
-    {% block content %}{% endblock %}
-</body>
-</html>
