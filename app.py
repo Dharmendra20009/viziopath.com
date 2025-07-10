@@ -37,6 +37,10 @@ def mock_test():
 def google_verification():
     return send_from_directory('.', 'google1717c39e0e1894b0.html')
 
+@app.route('/robots.txt')
+def robots_txt():
+    return send_from_directory('.', 'robots.txt')
+
 # Uncomment if you have a services page
 # @app.route('/services')
 # def services():
