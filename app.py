@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 
 app = Flask(__name__)
 
@@ -32,6 +32,10 @@ def contact():
 @app.route('/mock-test')
 def mock_test():
     return render_template('Mock Test.html')
+
+@app.route('/google1717c39e0e1894b0.html')
+def google_verification():
+    return send_from_directory('.', 'google1717c39e0e1894b0.html')
 
 # Uncomment if you have a services page
 # @app.route('/services')
