@@ -171,36 +171,12 @@
 <script>
 // List of all courses and specializations
 const courses = [
-    {
-        title: "Share Market",
-        desc: "Stock market basics, trading strategies, technical & fundamental analysis, risk management, and investment tools.",
-        img: "/static/assets/finance.jpg" // You can use a more relevant image if available, e.g., /static/assets/sharemarket.jpg
-    },
-    {
-        title: "Digital Marketing",
-        desc: "SEO, SEM, content creation, social media, analytics, paid ads, e-commerce, and more.",
-        img: "/static/assets/marketing.jpg"
-    },
-    {
-        title: "Banking and Finance",
-        desc: "Financial analysis, accounting, risk management, fintech, compliance, and data analysis.",
-        img: "/static/assets/finance.jpg"
-    },
-    {
-        title: "Business Analytics",
-        desc: "Data analysis, visualization, SQL, Excel, Python/R, BI tools, and problem-solving.",
-        img: "/static/assets/analyst.jpg"
-    },
-    {
-        title: "Graphic Design",
-        desc: "Creativity, typography, branding, Adobe Suite, UI/UX basics, and visual communication.",
-        img: "/static/assets/design.jpg"
-    },
-    {
-        title: "Entrepreneurship",
-        desc: "Innovation, leadership, business planning, risk-taking, networking, and marketing.",
-        img: "/static/assets/entrepreneur.jpg"
-    },
+    { title: "Share Market", desc: "Stock market basics, trading strategies, technical & fundamental analysis, risk management, and investment tools.", img: "/static/assets/finance.jpg" },
+    { title: "Digital Marketing", desc: "SEO, SEM, content creation, social media, analytics, paid ads, e-commerce, and more.", img: "/static/assets/marketing.jpg" },
+    { title: "Banking and Finance", desc: "Financial analysis, accounting, risk management, fintech, compliance, and data analysis.", img: "/static/assets/finance.jpg" },
+    { title: "Business Analytics", desc: "Data analysis, visualization, SQL, Excel, Python/R, BI tools, and problem-solving.", img: "/static/assets/analyst.jpg" },
+    { title: "Graphic Design", desc: "Creativity, typography, branding, Adobe Suite, UI/UX basics, and visual communication.", img: "/static/assets/design.jpg" },
+    { title: "Entrepreneurship", desc: "Innovation, leadership, business planning, risk-taking, networking, and marketing.", img: "/static/assets/entrepreneur.jpg" },
     {
         title: "Artificial Intelligence & Machine Learning",
         desc: "AI concepts, ML algorithms, data science, neural networks, and real-world projects.",
@@ -634,4 +610,93 @@ html { scroll-behavior: smooth; }
     }
 }
 </style>
+<a href="#home" class="brand-logo" style="display:flex;align-items:center;gap:0.5em;margin-right:auto;">
+    <img src="/static/assets/logo2.0.jpg" alt="VizioPath Logo" style="height:40px;border-radius:8px;">
+    <span style="color:#FFD600;font-size:1.3em;font-weight:bold;">VizioPath</span>
+</a>
+
+<!-- Futuristic Modal HTML -->
+<div id="futuristic-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;align-items:center;justify-content:center;background:rgba(10,10,30,0.95);backdrop-filter:blur(4px);">
+    <div class="futuristic-modal-content">
+        <div class="futuristic-bg"></div>
+        <div class="modal-inner">
+            <span id="modal-level-indicator" style="color:#FFD600;font-weight:bold;"></span>
+            <h2 style="color:#fff;margin-bottom:0.5em;">🔴 <span id="futuristic-modal-course"></span></h2>
+            <div id="level-1" class="modal-level">
+                <p style="color:#fff;">Level 1: Basic Details<br>Get an overview of the course and its objectives.</p>
+            </div>
+            <div id="level-2" class="modal-level" style="display:none;">
+                <p style="color:#fff;">Level 2: Requirements<br>See what you need to get started.</p>
+            </div>
+            <div id="level-3" class="modal-level" style="display:none;">
+                <p style="color:#fff;">Level 3: Start Your Game<br>Begin your interactive journey!</p>
+            </div>
+            <div id="level-4" class="modal-level" style="display:none;">
+                <p style="color:#fff;">Level 4: Challenges<br>Face real-world tasks and quizzes.</p>
+            </div>
+            <div id="level-5" class="modal-level" style="display:none;">
+                <p style="color:#fff;">Level 5: Completion<br>Congratulations! Unlock your certificate and next steps.</p>
+            </div>
+            <div style="margin-top:1.5em;">
+                <button id="modal-back" style="display:none;background:#FFD600;color:#222;padding:0.5em 1.2em;border:none;border-radius:20px;margin-right:1em;font-weight:bold;">Back</button>
+                <button id="modal-next" style="background:linear-gradient(90deg,#ff512f,#dd2476);color:#fff;padding:0.5em 1.2em;border:none;border-radius:20px;font-weight:bold;">Next</button>
+                <button onclick="closeFuturisticModal()" style="background:#222;color:#FFD600;padding:0.5em 1.2em;border:none;border-radius:20px;margin-left:1em;font-weight:bold;">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Futuristic Modal Functionality
+let currentLevel = 1;
+const totalLevels = 5;
+
+function openFuturisticModal(courseTitle) {
+    document.getElementById('futuristic-modal-course').textContent = courseTitle;
+    document.getElementById('futuristic-modal').style.display = 'flex';
+    showLevel(currentLevel);
+}
+
+function closeFuturisticModal() {
+    document.getElementById('futuristic-modal').style.display = 'none';
+    currentLevel = 1;
+}
+
+function showLevel(level) {
+    for (let i = 1; i <= totalLevels; i++) {
+        document.getElementById('level-' + i).style.display = (i === level) ? 'block' : 'none';
+    }
+    document.getElementById('modal-level-indicator').textContent = `Level ${level} of ${totalLevels}`;
+    document.getElementById('modal-back').style.display = (level === 1) ? 'none' : 'inline-block';
+    document.getElementById('modal-next').textContent = (level === totalLevels) ? 'Finish' : 'Next';
+}
+
+// Event listeners for demo buttons (replace with actual course buttons)
+document.querySelectorAll('.live-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const courseTitle = btn.closest('.three-d-card').querySelector('.three-d-card-title').textContent;
+        openFuturisticModal(courseTitle);
+    });
+});
+
+document.getElementById('modal-next').addEventListener('click', () => {
+    if (currentLevel < totalLevels) {
+        currentLevel++;
+        showLevel(currentLevel);
+    } else {
+        closeFuturisticModal();
+        // Optionally, navigate to the course or show a completion message
+        alert('Congratulations! You have completed the course overview.');
+    }
+});
+
+document.getElementById('modal-back').addEventListener('click', () => {
+    if (currentLevel > 1) {
+        currentLevel--;
+        showLevel(currentLevel);
+    }
+});
+</script>
+
 {% endblock %}
