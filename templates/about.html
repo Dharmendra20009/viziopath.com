@@ -237,6 +237,30 @@
                 padding: 1.2em 0.5em;
             }
         }
+
+        /* CEO card full-image responsive styles */
+        @media (max-width: 700px) {
+            .about-feature-card.ceo-card {
+                width: 99vw !important;
+                max-width: 99vw !important;
+                min-width: 0 !important;
+                min-height: 220px !important;
+                padding: 0 !important;
+            }
+            .about-feature-card.ceo-card img {
+                min-height: 220px !important;
+                height: 220px !important;
+            }
+            .about-feature-card.ceo-card .ceo-overlay {
+                padding: 0.7em 0.3em 0.7em 0.3em !important;
+            }
+            .about-feature-card.ceo-card h3 {
+                font-size: 1.1em !important;
+            }
+            .about-feature-card.ceo-card p {
+                font-size: 0.98em !important;
+            }
+        }
     </style>
     {% endblock %}
 </head>
@@ -289,10 +313,10 @@
 
     <!-- Add this after the about-cards-flex div, before about-mission-vision -->
     <div style="display:flex;justify-content:center;margin:2em 0;">
-        <div class="about-feature-card" style="background:rgba(255,255,255,0.13);border:2px solid #FFD600;max-width:340px;padding:0;overflow:hidden;position:relative;min-height:380px;">
+        <div class="about-feature-card ceo-card" style="background:rgba(255,255,255,0.13);border:2px solid #FFD600;max-width:340px;padding:0;overflow:hidden;position:relative;min-height:380px;">
             <img src="{{ url_for('static', filename='assets/CEO.jpg') }}" alt="Dharmendra Gupta - CEO & Founder"
                  style="width:100%;height:100%;object-fit:cover;display:block;min-height:380px;">
-            <div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(20,20,40,0.88);padding:1.2em 0.5em 1em 0.5em;">
+            <div class="ceo-overlay" style="position:absolute;bottom:0;left:0;width:100%;background:rgba(20,20,40,0.88);padding:1.2em 0.5em 1em 0.5em;">
                 <h3 style="color:#FFD600;margin:0;">Dharmendra Gupta</h3>
                 <p style="color:#fff;font-size:1.08em;margin:0 0 0.3em 0;">Founder & CEO</p>
                 <p style="color:#FFD600;font-size:0.98em;margin:0;">Visionary leader, passionate about empowering students with real-world skills and opportunities.</p>
