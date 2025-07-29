@@ -170,6 +170,73 @@
                 background: #0056b3;
             }
         }
+
+        .about-feature-card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 16px;
+            box-shadow: 0 4px 24px #ffd60022, 0 1.5px 8px #ffd60033;
+            width: 220px;
+            min-height: 320px;
+            text-align: center;
+            padding: 1.5em 1em 1.2em 1em;
+            color: #FFD600;
+            transition: transform 0.25s, box-shadow 0.25s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .about-feature-card:hover {
+            transform: scale(1.06) translateY(-8px);
+            box-shadow: 0 12px 36px #FFD60055, 0 4px 32px #ffd60033;
+            background: rgba(30, 30, 60, 0.95);
+        }
+        .about-feature-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1em;
+            box-shadow: 0 2px 12px #ffd60044;
+        }
+        @media (max-width: 900px) {
+            .about-cards-flex {
+                flex-wrap: wrap;
+                gap: 1.2em;
+            }
+            .about-feature-card {
+                width: 95vw;
+                min-width: 0;
+                max-width: 99vw;
+                margin: 0 auto;
+            }
+        }
+        @media (max-width: 700px) {
+            .about-hero {
+                flex-direction: column;
+                gap: 1em;
+                text-align: center;
+            }
+            .about-cards-flex {
+                flex-direction: column;
+                gap: 1em;
+                align-items: stretch;
+            }
+            .about-feature-card {
+                width: 99vw;
+                min-width: 0;
+                max-width: 99vw;
+                margin: 0 auto 1em auto;
+                font-size: 1.1em;
+                padding: 1.2em 0.5em;
+            }
+            .about-feature-img {
+                width: 60px;
+                height: 60px;
+            }
+            .about-mission-vision {
+                padding: 1.2em 0.5em;
+            }
+        }
     </style>
     {% endblock %}
 </head>
@@ -186,73 +253,65 @@
     </nav>
     <div style="height:84px;"></div> <!-- Add this line just after nav to prevent content from hiding under navbar -->
     {% block content %}
-    <div class="content">
-        <h1>Welcome to VizioPath</h1>
-        <p>
-            <strong>Empowering Your Future:</strong> At VizioPath, we transform learning into real-world success. Our mission is to guide you from curiosity to career, with hands-on skills, expert mentorship, and a supportive community.
-        </p>
-        <h2>Our Vision</h2>
-        <p>
-            <em>Unlock your potential.</em> We help you build confidence, creativity, and the skills to thrive in a fast-changing world.
-        </p>
-        <h2>Explore Our Career Tracks</h2>
-        <div class="about-card-section" style="display: flex; flex-wrap: wrap; gap: 1.5em; justify-content: center;">
-            <div class="about-card">
-                <span style="font-size:2em;">💡</span>
-                <h3>Digital Marketing</h3>
-                <p>Master online strategies to grow brands and connect with global audiences.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">💰</span>
-                <h3>Banking & Finance</h3>
-                <p>Build a strong foundation in financial management and investment skills.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">📊</span>
-                <h3>Business Analytics</h3>
-                <p>Turn data into insights and drive smarter business decisions.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">🎨</span>
-                <h3>Graphic Design</h3>
-                <p>Unleash your creativity with modern design tools and techniques.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">🚀</span>
-                <h3>Entrepreneurship</h3>
-                <p>Learn to launch, grow, and lead your own business venture.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">🤝</span>
-                <h3>HR Management</h3>
-                <p>Shape workplace culture and manage talent for organizational success.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">📈</span>
-                <h3>Marketing</h3>
-                <p>Develop campaigns that captivate and convert audiences.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">⚙️</span>
-                <h3>Operations</h3>
-                <p>Optimize processes and deliver results in any industry.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">🌏</span>
-                <h3>International Business</h3>
-                <p>Navigate global markets and cross-cultural opportunities.</p>
-            </div>
-            <div class="about-card">
-                <span style="font-size:2em;">💻</span>
-                <h3>Information Technology</h3>
-                <p>Build, secure, and innovate with the latest tech solutions.</p>
-            </div>
-            <!-- Add more cards as needed, following the same pattern -->
+    <div class="about-hero" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:2em;margin:2em 0;">
+        <img src="{{ url_for('static', filename='assets/logo2.0.jpg') }}" alt="VizioPath Logo" style="height:110px;border-radius:18px;box-shadow:0 4px 24px #ffd60055;">
+        <div style="max-width:600px;">
+            <h1 style="color:#FFD600;font-size:2.2em;margin-bottom:0.2em;">About VizioPath</h1>
+            <h2 style="color:#fff;font-size:1.3em;margin-bottom:0.7em;">Empowering Learners. Transforming Futures.</h2>
+            <p style="color:#f5f5f5;font-size:1.1em;">
+                At VizioPath, we are on a mission to bridge the gap between education and employability. In less than a year, our goal is to equip over <b>20,000 students</b> with the skills, tools, and confidence needed to succeed in the modern job market.
+            </p>
         </div>
-        <div style="text-align: left; margin-top: 2em;">
-            <h2 style="color: #f9f1f1;">Founder & CEO</h2>
-            <p style="color: #ebe7e7;">Dharmendra Gupta</p>
+    </div>
+
+    <div class="about-cards-flex" style="display:flex;flex-wrap:wrap;gap:2em;justify-content:center;margin:2em 0;">
+        <div class="about-feature-card">
+            <img src="{{ url_for('static', filename='assets/analyst.jpg') }}" alt="Skills Training" class="about-feature-img">
+            <h3>Industry Skills Training</h3>
+            <p>High-quality, job-ready skills for today’s careers.</p>
         </div>
+        <div class="about-feature-card">
+            <img src="{{ url_for('static', filename='assets/AI.jpg') }}" alt="Resume Support" class="about-feature-img">
+            <h3>Resume & Career Support</h3>
+            <p>Professional resume building, interview prep, and mentorship.</p>
+        </div>
+        <div class="about-feature-card">
+            <img src="{{ url_for('static', filename='assets/ft.jpg') }}" alt="Job Connections" class="about-feature-img">
+            <h3>Job & Internship Connections</h3>
+            <p>Direct links to employers, internships, and real opportunities.</p>
+        </div>
+        <div class="about-feature-card">
+            <img src="{{ url_for('static', filename='assets/courses.jpg') }}" alt="Practical Projects" class="about-feature-img">
+            <h3>Practical Projects</h3>
+            <p>Exclusive resources and hands-on, real-world projects.</p>
+        </div>
+    </div>
+
+    <!-- Add this after the about-cards-flex div, before about-mission-vision -->
+    <div style="display:flex;justify-content:center;margin:2em 0;">
+        <div class="about-feature-card" style="background:rgba(255,255,255,0.13);border:2px solid #FFD600;max-width:340px;padding:0;overflow:hidden;position:relative;min-height:380px;">
+            <img src="{{ url_for('static', filename='assets/CEO.jpg') }}" alt="Dharmendra Gupta - CEO & Founder"
+                 style="width:100%;height:100%;object-fit:cover;display:block;min-height:380px;">
+            <div style="position:absolute;bottom:0;left:0;width:100%;background:rgba(20,20,40,0.88);padding:1.2em 0.5em 1em 0.5em;">
+                <h3 style="color:#FFD600;margin:0;">Dharmendra Gupta</h3>
+                <p style="color:#fff;font-size:1.08em;margin:0 0 0.3em 0;">Founder & CEO</p>
+                <p style="color:#FFD600;font-size:0.98em;margin:0;">Visionary leader, passionate about empowering students with real-world skills and opportunities.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-mission-vision" style="max-width:800px;margin:2em auto 0 auto;padding:2em 1em;background:rgba(20,20,40,0.85);border-radius:18px;box-shadow:0 4px 24px #ffd60033;">
+        <h2 style="color:#FFD600;">Our Vision</h2>
+        <p style="color:#fff;">To become a leading platform that empowers every student to be job-ready with real-world skills, industry exposure, and career support—regardless of their background.</p>
+        <h2 style="color:#FFD600;margin-top:1.5em;">Our Mission</h2>
+        <ul style="color:#fff;font-size:1.08em;line-height:1.7;">
+            <li>Delivering high-quality, industry-relevant skills training</li>
+            <li>Providing professional resume-building support</li>
+            <li>Guiding learners with interview preparation and career mentorship</li>
+            <li>Connecting students with job opportunities and internships</li>
+            <li>Offering access to exclusive resources and practical projects</li>
+        </ul>
+        <p style="color:#FFD600;font-weight:bold;margin-top:1.2em;">At VizioPath, you don’t just learn—you grow, practice, and prepare for the real world.</p>
     </div>
     {% endblock %}
 </body>
