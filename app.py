@@ -41,6 +41,10 @@ def google_verification():
 def robots_txt():
     return send_from_directory('.', 'robots.txt')
 
+@app.route('/resume-builder')
+def resume_builder():
+    return render_template('Resume Builder.html')
+
 # Uncomment if you have a services page
 # @app.route('/services')
 # def services():
